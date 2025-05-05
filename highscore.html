@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OSRS MultiTool</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="maincontainer">
+      <div class="nav">
+        <div class="navlinks">
+          <a href="index.html" class="navbutton">🏠 Main page</a>
+          <a href="items.html" class="navbutton">🪙 Item Search</a>
+        </div>
+        <div class="searchhistorycontainer">
+          <button id="togglehistorybutton" class="navbutton">
+            ⌛ Search History ▼
+          </button>
+          <div id="searchHistory"></div>
+        </div>
+      </div>
+      <div class="logocontainer">
+        <img src="icons/Logo2.png" alt="OSRS MultiTool Logo" id="logo" />
+      </div>
+      <div class="searchusername" id="searchusername">
+        <input
+          type="text"
+          class="searchusernameinput"
+          id="userName"
+          placeholder="Enter player username"
+        />
+        <button id="clearbutton" class="searchbarbutton">
+          <span class="material-symbols-outlined button">close</span>
+        </button>
+        <button id="searchbutton" class="searchbarbutton">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+      </div>
+      <div class="loader" id="loader">
+        <img src="icons/loading.gif" alt="Loading..." />
+      </div>
+      <div class="playerinfo" id="playerinfo">
+        <div id="skillNames"></div>
+        <div class="activities" id="activities"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
