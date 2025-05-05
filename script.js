@@ -121,23 +121,25 @@ document.getElementById("userName").addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
     fetchPlayer();
+    const searchInput = document.getElementById("userName");
+    const input = searchInput.value;
+    addToSearchHistory(input);
+    searchInput.value = "";
+    displaySearchHistory();
   }
 });
 
 document.getElementById("searchbutton").addEventListener("click", () => {
   fetchPlayer();
-});
-
-document.getElementById("clearbutton").addEventListener("click", () => {
-  clearInput();
-});
-
-document.getElementById("searchbutton").addEventListener("click", () => {
   const searchInput = document.getElementById("userName");
   const input = searchInput.value;
   addToSearchHistory(input);
   searchInput.value = "";
   displaySearchHistory();
+});
+
+document.getElementById("clearbutton").addEventListener("click", () => {
+  clearInput();
 });
 
 document.getElementById("togglehistorybutton").addEventListener("click", () => {
