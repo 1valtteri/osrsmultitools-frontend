@@ -117,6 +117,13 @@ function addToSearchHistory(input) {
   }
 }
 
+document.getElementById("userName").addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    fetchPlayer();
+  }
+});
+
 document.getElementById("searchbutton").addEventListener("click", () => {
   fetchPlayer();
 });
