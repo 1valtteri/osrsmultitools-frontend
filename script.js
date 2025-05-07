@@ -1,3 +1,4 @@
+// Fetches the player data from the API based on the player username.
 async function fetchPlayer() {
   try {
     document.getElementById("loader").style.display = "block";
@@ -85,11 +86,14 @@ async function fetchPlayer() {
   }
 }
 
+// Clears the username input field.
 function clearInput() {
   const input = document.getElementById("userName");
   input.value = "";
 }
 
+// Displays the search history from local storage in the search history box. 
+// Also allows the user to click the search term in the search history box and fills the input field with the clicked search term.
 function displaySearchHistory() {
   const searchHistoryContainer = document.getElementById("searchHistory");
   searchHistoryContainer.innerHTML = "";
@@ -105,6 +109,7 @@ function displaySearchHistory() {
   });
 }
 
+// Adds the given input to the search history which is stored in local storage. The search history is limited to 5 searches.
 function addToSearchHistory(input) {
   if (input === null || input.trim() === "") {
     return;
@@ -117,18 +122,7 @@ function addToSearchHistory(input) {
   }
 }
 
-document.getElementById("userName").addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    fetchPlayer();
-    const searchInput = document.getElementById("userName");
-    const input = searchInput.value;
-    addToSearchHistory(input);
-    searchInput.value = "";
-    displaySearchHistory();
-  }
-});
-
+// Event: when the user clicks the search button, the player data is fetched from the API and the input is added to search history.
 document.getElementById("searchbutton").addEventListener("click", () => {
   fetchPlayer();
   const searchInput = document.getElementById("userName");
@@ -138,10 +132,12 @@ document.getElementById("searchbutton").addEventListener("click", () => {
   displaySearchHistory();
 });
 
+// Event: when the clear input button is clicked, the input field is emptied.
 document.getElementById("clearbutton").addEventListener("click", () => {
   clearInput();
 });
 
+// Event: the search history can be toggled to be visible or not clicking the toggle button.
 document.getElementById("togglehistorybutton").addEventListener("click", () => {
   const searchHistoryContainer = document.getElementById("searchHistory");
   searchHistoryContainer.style.display =
