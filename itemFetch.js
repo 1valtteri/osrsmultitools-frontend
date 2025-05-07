@@ -1,9 +1,9 @@
-
+//vaida hosti alla olevaksi localhostiksi jos pyörität serveriä paikallisesti
 //const host = "http://localhost:3000"
 const host = window.location.origin;
 
 let itemsList = null;
-
+//hakee listan kaikista mahdollisita haettavista itemeistä itemsearch.json tiedostosta
 async function getItemsList() {
     if (!itemsList) {
         try {
@@ -21,7 +21,7 @@ async function getItemsList() {
     return itemsList;
 }
 
-
+//etsii itemin ID:n käyttäen käyttäjän antamaa itemin nimeä
 async function idForName(itemName) {
     const itemList = await getItemsList();
     const itemSearchKey = itemName.toLowerCase();
@@ -35,6 +35,7 @@ async function idForName(itemName) {
     return null;
 }
 
+//hakee itemin tiedot runescapen APIsta käyttä idForName funktiosta haettua ID:tä
 async function fetchItem(event) {
     event.preventDefault();
     const itemName = document.getElementById("itemSearchBox").value;
@@ -72,12 +73,13 @@ async function fetchItem(event) {
 
 }
 
+//tyhjentää itemdatan
 function clearItem() {
     const itemDiv = document.getElementById("itemData");
     itemDiv.innerHTML = "";
 }
 
-
+//näyttää haetun itemin tiedot
 function showItem(item) {
     clearItem();
     const itemDiv = document.getElementById("itemData");
@@ -111,6 +113,7 @@ function showItem(item) {
     itemDiv.append(price180Day);
 }
 
+//antaa virheviestin jos itemiä ei löydy
 function showItemNotFound(item) {
     clearItem();
     const itemDiv = document.getElementById("itemData");
@@ -124,15 +127,17 @@ function showItemNotFound(item) {
 
 }
 
-
+//luo eventlistenerin seuraamaan käyttäjän kirjoittamista
 const itemSearchBoxEl = document.getElementById("itemSearchBox");
 itemSearchBoxEl.addEventListener("input", itemSearchBoxChanged);
 
+//muuttaa autofillin suosittelemiä itemeitä kun käyttäjä kirjoittaa
 function itemSearchBoxChanged(e) {
     const searchText = e.target.value;
     fillAutocompleteList(searchText);
 }
 
+//sulkee autofill valikon kun item on valittu ja lisää valitun itemin tekstikenttään
 function itemClicked(e) {
     e.preventDefault();
     itemSearchBoxEl.value = e.target.textContent;
@@ -143,6 +148,7 @@ function itemClicked(e) {
 
 }
 
+//funktio näyttää hakuedotuksia käyttäjälle
 async function fillAutocompleteList(searchText) {
     const itemsListEl = document.getElementById("itemsList");
     itemsListEl.innerHTML = "";
@@ -169,6 +175,7 @@ async function fillAutocompleteList(searchText) {
 
 }
 
+//näyttää hakuhistorian
 function displaySearchHistory() {
     const searchHistoryContainer = document.getElementById("searchHistory");
     searchHistoryContainer.innerHTML = "";
@@ -184,6 +191,7 @@ function displaySearchHistory() {
     });
 }
 
+//lisää haetun itemin hakuhistoriaan
 function addToSearchHistory(input) {
     if (input === null || input.trim() === "") {
         return;
