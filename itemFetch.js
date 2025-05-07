@@ -43,7 +43,10 @@ async function fetchItem(event) {
 
     try {
         clearItem();
-        const response = await fetch(`${host}/item/${itemId}`);
+        // const response = await fetch(`${host}/item/${itemId}`);
+        const response = await fetch(
+          `https://osrsmultitools-api-backend.onrender.com/item/${itemId}`
+        );
         if (response.ok) {
             itemData = await response.json();
 
