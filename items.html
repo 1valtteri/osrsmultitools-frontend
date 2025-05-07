@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSRS MultiTool</title>
     <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+  />
+
 </head>
+
+
 <body>
-    <img src="icons/Logo2.png" alt="OSRS MultiTool Logo" id="logo">
-    <div class="searchitem">
-        <input type="text" class="item" id="item" placeholder="Enter player item name">
-        <button onclick="fetchItem()">Search item</button>
+    <div class="maincontainer">
+        <div class="nav">
+            <div class="navlinks">
+                <a href="/O4/index.html" class="navbutton">🏠 Main page</a>
+                <a href="/O4/highscore.html" class="navbutton">🪙 Player search</a>
+            </div>
+            <div class="searchhistorycontainer">
+                <button id="togglehistorybutton" class="navbutton">
+                    📜 Search History ▼
+                </button>
+                <div id="searchHistory"></div>
+            </div>
+        </div>
+        <div class="logocontainer">
+            <img src="icons/Logo2.png" alt="OSRS MultiTool Logo" id="logo">
+        </div>
+        <div class = "searchContainer">
+            <div class="searchitem">
+                <form action="" autocomplete="off">
+                    <input type="text" class="item" id="itemSearchBox" placeholder="Enter item name">
+                    <ul id="itemsList">
+                    </ul>
+                    <button onclick="fetchItem(event)">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </form>
+            </div>
+            <div id="itemData"></div>
+        </div>
+        <script src="itemFetch.js"></script>
     </div>
-
-    <div id="itemData"></div>
-
-
-    
-    <script src="itemFetch.js"></script>
 </body>
+
 </html>
